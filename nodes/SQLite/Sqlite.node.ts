@@ -7,6 +7,7 @@ import {
 	INodeTypeDescription,
 	NodeOperationError,
 } from 'n8n-workflow';
+import path from 'path';
 
 import sqlite3 from 'sqlite3';
 import { Database, open } from 'sqlite';
@@ -184,13 +185,16 @@ export class Sqlite implements INodeType {
 		let db: Database<sqlite3.Database, sqlite3.Statement>;
 		try {
 			db = await open({
-				filename,
+				filename: path.resolve(__dirname, filename),
 				driver: sqlite3.Database,
 			});
 		} catch (error) {
-			const db3 = new sqlite3.Database(filename, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE);
+			const db3 = new sqlite3.Database(
+				path.resolve(__dirname, filename),
+				sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
+			);
 			db = await open({
-				filename,
+				filename: path.resolve(__dirname, filename),
 				driver: sqlite3.Database,
 			});
 		}
