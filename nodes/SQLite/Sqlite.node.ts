@@ -254,12 +254,7 @@ export class Sqlite implements INodeType {
 					}
 					break;
 				case 'create':
-					new sqlite3.Database(filename, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
-						// do your thing
-						if (err) {
-							console.log('eero', err);
-						}
-					});
+					new sqlite3.Database(filename, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE);
 
 				default:
 					await db.close();
