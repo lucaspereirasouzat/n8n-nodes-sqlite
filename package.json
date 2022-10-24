@@ -32,10 +32,10 @@
 	"n8n": {
 		"n8nNodesApiVersion": 1,
 		"credentials": [
-			"dist/credentials/SQLite.credentials.js"
+			"dist/credentials/SqliteApi.credentials.js"
 		],
 		"nodes": [
-			"dist/nodes/SQLite/SQLite.node.js"
+			"dist/nodes/SQLite/Sqlite.node.js"
 		]
 	},
 	"devDependencies": {

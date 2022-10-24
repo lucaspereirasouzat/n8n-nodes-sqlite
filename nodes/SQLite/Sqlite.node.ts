@@ -177,7 +177,7 @@ export class SQLite implements INodeType {
 		const operation = this.getNodeParameter('operation', 0) as string;
 
 		const db = await open({
-			filename: filename,
+			filename,
 			driver: sqlite3.Database,
 		});
 

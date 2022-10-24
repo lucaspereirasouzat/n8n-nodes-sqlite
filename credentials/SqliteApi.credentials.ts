@@ -1,8 +1,8 @@
 import { ICredentialType, INodeProperties } from 'n8n-workflow';
 
-export class ToolzzApi implements ICredentialType {
-	name = 'toolzzApi';
-	displayName = 'Toolzz API';
+export class SqliteApi implements ICredentialType {
+	name = 'sqliteApi';
+	displayName = 'Sqlite API';
 	properties: INodeProperties[] = [
 		{
 			displayName: 'Email',
