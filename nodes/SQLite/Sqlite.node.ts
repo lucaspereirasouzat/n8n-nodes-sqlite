@@ -256,7 +256,7 @@ export class Sqlite implements INodeType {
 				case 'create':
 					new sqlite3.Database(filename, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, (err) => {
 						// do your thing
-						console.log('eero');
+						console.log('eero', err);
 					});
 
 				default:
