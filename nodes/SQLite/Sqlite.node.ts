@@ -188,7 +188,7 @@ export class Sqlite implements INodeType {
 				driver: sqlite3.Database,
 			});
 		} catch (error) {
-			new sqlite3.Database(filename, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE);
+			const db3 = new sqlite3.Database(filename, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE);
 			db = await open({
 				filename,
 				driver: sqlite3.Database,
