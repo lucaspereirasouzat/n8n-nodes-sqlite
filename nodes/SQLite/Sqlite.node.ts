@@ -13,9 +13,9 @@ import { open } from 'sqlite';
 
 import { copyInputItems } from './GenericFunctions';
 
-export class SQLite implements INodeType {
+export class Sqlite implements INodeType {
 	description: INodeTypeDescription = {
-		displayName: 'SQLite',
+		displayName: 'Sqlite',
 		name: 'sqlite',
 		icon: 'file:sqlite.svg',
 		group: ['input'],
