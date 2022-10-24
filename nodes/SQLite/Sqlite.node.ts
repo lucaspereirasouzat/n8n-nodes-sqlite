@@ -254,7 +254,7 @@ export class Sqlite implements INodeType {
 					}
 					break;
 				case 'create':
-					new sqlite3.Database(filename, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE);
+					const db2 = new sqlite3.Database(filename, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE);
 
 				default:
 					await db.close();
