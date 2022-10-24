@@ -9,7 +9,7 @@ import {
 } from 'n8n-workflow';
 
 import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+import { Database, open } from 'sqlite';
 
 import { copyInputItems } from './GenericFunctions';
 
@@ -181,11 +181,19 @@ export class Sqlite implements INodeType {
 		const items = this.getInputData();
 		const filename = this.getNodeParameter('database', 0) as string;
 		const operation = this.getNodeParameter('operation', 0) as string;
-
-		const db = await open({
-			filename,
-			driver: sqlite3.Database,
-		});
+		let db: Database<sqlite3.Database, sqlite3.Statement>;
+		try {
+			db = await open({
+				filename,
+				driver: sqlite3.Database,
+			});
+		} catch (error) {
+			new sqlite3.Database(filename, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE);
+			db = await open({
+				filename,
+				driver: sqlite3.Database,
+			});
+		}
 
 		let returnItems: any[] = [];
 
@@ -253,8 +261,6 @@ export class Sqlite implements INodeType {
 						}
 					}
 					break;
-				case 'create':
-					const db2 = new sqlite3.Database(filename, sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE);
 
 				default:
 					await db.close();

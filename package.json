@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-sqlite",
-	"version": "0.1.12",
+	"version": "0.1.13",
 	"description": "Custom n8n node module for sqlite database",
 	"keywords": [
 		"n8n-community-node-package",
